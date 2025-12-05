@@ -3,66 +3,45 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>CI • The Table Well</title>
+<link rel="stylesheet" href="style.css" />
+<link rel="manifest" href="/manifest.json" />
+<script>
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/sw.js');
+}
+</script>
+<script type="module" src="/router.js"></script>
+</head>
 
-<title>AKDmediaX • The Table Well</title>
+<body>
 
-<style>
-    /* Reset */
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
+<div class="background"></div>
 
-    body, html {
-        height: 100%;
-        width: 100%;
-        overflow: hidden;
-        font-family: "Georgia", serif;
-    }
+<div class="center-container">
+    <div class="center-text">
+        <div class="ci">Your Inheritance Is Seeved</div>
+        <div class="subtitle">Sit and Feast</div>
+    </div>
+</div>
 
-    /* Background */
-    .background {
-        position: fixed;
-        inset: 0;
-        background-image: url('background.jpg'); /* your image stays */
-        background-size: cover;
-        background-position: center;
-        z-index: -1;
-    }
+<div class="footer-container">
+    <div class="footer-text">
+        <div class="brand">AKDmediaX</div>
+        <div class="line">A Creative Fellowship Where Tech Bows to Presence</div>
+        <div class="line">Redeeming Abba’s Kingdom Design</div>
 
-    /* Centered invisible section (removed CI text) */
-    .center-container {
-        height: 40%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
+        <div class="quote">
+            “Embrace the truth and hold it close.<br>
+            Don’t let go of wisdom, instruction, and life-giving understanding.” — TPT
+        </div>
 
-    /* Footer Section */
-    .footer-container {
-        position: absolute;
-        bottom: 0;
-        width: 100%;
-        padding: 1.5rem 1rem;
-        text-align: center;
-        background: rgba(0,0,0,0.25);
-        backdrop-filter: blur(4px);
-    }
+        <div class="rights">© 2025 AKDmediaX — All Rights Reserved.</div>
+    </div>
+</div>
 
-    .footer-text {
-        color: #8A0000; /* BLOOD RED */
-        font-size: 1rem;
-        line-height: 1.4;
-        text-shadow: 0 0 4px rgba(255, 255, 255, 0.45);
-    }
-
-    .brand {
-        font-size: 1.8rem;
-        font-weight: bold;
-        margin-bottom: 0.5rem;
-        letter-spacing: 2px;
-    }
+</body>
+</html>
 
     .line {
         margin-bottom: 0.25rem;
