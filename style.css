@@ -1,98 +1,122 @@
 /* RESET */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-/* BACKGROUND IMAGE — uses whatever file path you already have */
+/* FULL DOCUMENT */
+html, body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    font-family: "Georgia", serif;
+}
+
+/* BACKGROUND — rooted exactly as original */
 .background {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    z-index: -1;
-    filter: brightness(0.85);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('Table_Well.jpeg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    filter: brightness(0.78); /* slightly deeper covenant tone */
+    z-index: -1;
 }
 
-/* CENTER TEXT */
+/* CENTER SECTION */
 .center-container {
-    width: 100%;
-    height: 60vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 2rem;
+    position: absolute;
+    top: 18%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    padding: 0 2vw;
 }
 
-.center-text .title {
-    font-size: clamp(1.8rem, 4vw, 4rem);
-    font-weight: 600;
-    color: #8b0000; /* blood red */
-    text-shadow: 0px 0px 15px rgba(0,0,0,0.7);
-    margin-bottom: 0.5rem;
+.center-text {
+    color: #8b0000; /* BLOOD RED — covenant tone */
+    text-shadow: 0 0 14px rgba(0,0,0,0.7);
+    line-height: 1.2;
 }
 
-.center-text .subtitle {
-    font-size: clamp(1rem, 2.5vw, 2rem);
-    color: #8b0000; /* blood red */
-    text-shadow: 0px 0px 10px rgba(0,0,0,0.7);
+/* TITLE (Your Inheritance Is Served) */
+.ci {
+    font-size: clamp(2.6rem, 6vw, 6rem);
+    font-weight: 700;
+    letter-spacing: 0.05em;
 }
 
-/* FOOTER */
+/* SUBTITLE (Sit and Feast) */
+.subtitle {
+    margin-top: 0.6rem;
+    font-size: clamp(1rem, 2.5vw, 1.8rem);
+    opacity: 0.92;
+}
+
+/* FOOTER SECTION */
 .footer-container {
-    width: 100%;
-    background: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(6px);
-    padding: 1.5rem 1rem;
-    margin-top: 2rem;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding-bottom: 2rem;
+    display: flex;
+    justify-content: center;
 }
 
 .footer-text {
-    text-align: center;
-    color: #8b0000; /* blood red */
-    font-family: serif;
+    text-align: center;
+    max-width: 92%;
+    color: #8b0000; /* BLOOD RED */
+    text-shadow: 0 0 7px rgba(0,0,0,0.6);
+    line-height: 1.35;
+    backdrop-filter: blur(4px);
+    padding: 0.5rem 1rem;
 }
 
+/* BRAND */
 .brand {
-    font-size: clamp(1.3rem, 3vw, 2rem);
-    font-weight: 700;
-    margin-bottom: 0.5rem;
+    font-size: clamp(1.5rem, 3.2vw, 2.4rem);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
 }
 
+/* FOOTER LINES */
 .line {
-    font-size: clamp(0.9rem, 2vw, 1.2rem);
-    margin-bottom: 0.4rem;
+    font-size: clamp(0.9rem, 2vw, 1.3rem);
+    margin-bottom: 0.35rem;
 }
 
+/* QUOTE */
 .quote {
-    font-size: clamp(0.9rem, 2vw, 1.2rem);
-    margin: 1rem 0;
-    line-height: 1.5;
+    font-size: clamp(0.85rem, 1.8vw, 1.2rem);
+    margin: 1.1rem 0;
+    opacity: 0.95;
+    line-height: 1.4;
 }
 
+/* RIGHTS */
 .rights {
-    margin-top: 1rem;
-    font-size: clamp(0.7rem, 1.5vw, 1rem);
-    opacity: 0.8;
+    font-size: clamp(0.7rem, 1.2vw, 1rem);
+    opacity: 0.82;
+    margin-top: 0.4rem;
 }
 
-/* TABLET FIXES */
+/* TABLET SCALING */
 @media (min-width: 600px) and (max-width: 1024px) {
-    .center-container {
-        height: 50vh;
-    }
+    .center-container {
+        top: 20%;
+    }
 }
 
-/* DESKTOP */
-@media (min-width: 1025px) {
-    .center-container {
-        height: 70vh;
-    }
+/* DESKTOP SUPERWIDES */
+@media (min-width: 1600px) {
+    .center-container {
+        top: 22%;
+    }
 }
