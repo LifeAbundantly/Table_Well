@@ -1,7 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta http-equiv="refresh" content="0; url=/mirror/ci-router.js">
+  <meta charset="UTF-8" />
+  <script>
+    // Forward all requests through the CI mirror layer
+    const params = new URLSearchParams(window.location.search);
+    const anchor = params.get('ci.cherev') || '';
+    window.location.href = `/Table_Well/?ci.cherev${anchor}`;
+  </script>
 </head>
 <body></body>
 </html>
