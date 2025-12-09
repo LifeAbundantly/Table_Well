@@ -170,34 +170,7 @@
     </div>
   </aside>
 
-  <script>
-    (function () {
-      // Safe handling of "?ci.cherev" so it never breaks the Table.
-      // If someone visits the page with "?ci.cherev" in the URL,
-      // we simply ignore the parameter and let the Table load normally.
-
-      try {
-        var url = new URL(window.location.href);
-
-        // If the only query string is exactly "?ci.cherev", we leave it alone.
-        // The Table app itself should not depend on any query parameters,
-        // so nothing here changes app behavior, only prevents future experiments
-        // from breaking on this param.
-        if (!url.search || url.search === "?ci.cherev") {
-          // Do nothing. Let the page load normally.
-          return;
-        }
-
-        // For any other query params, we also do nothing.
-        // This block is future-safe: it simply guarantees that
-        // `?ci.cherev` will never trigger a redirect loop or error.
-      } catch (e) {
-        // If URL parsing fails for any reason, fail silently.
-        // The Table should still render as a normal static page.
-      }
-    })();
-  </script>
-
+  <script src="mirror.js"></script>
   <script>
     // Simple front-end behavior:
     // - When a message is sent, open the panel and echo a placeholder line.
