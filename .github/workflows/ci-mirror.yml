@@ -1,0 +1,40 @@
+name: CI Mirror Deploy
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ["main"]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build mirror artifact
+        shell: bash
+        run: |
+          rm -rf mirror
+          mkdir mirror
+          cp -r * mirror/ || true
+          echo "<!DOCTYPE html><html><head><meta http-equiv='refresh' content='0; url=/' /></head><body></body></html>" > mirror/404.html
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: mirror
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
