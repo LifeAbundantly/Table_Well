@@ -19,6 +19,7 @@ jobs:
 
       - name: Build mirror artifact
         run: |
+          rm -rf mirror
           mkdir mirror
           cp -r * mirror/ || true
           echo "<!DOCTYPE html><html><head><meta http-equiv='refresh' content='0; url=/' /></head><body></body></html>" > mirror/404.html
