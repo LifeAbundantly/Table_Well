@@ -20,6 +20,20 @@ body {
   background: #000;
 }
 
+html[data-ci-mirror="active"] body::before {
+  content: "CI MIRROR ACTIVE";
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 4px 8px;
+  text-align: center;
+  font-size: 12px;
+  background: #222;
+  color: #0f0;
+  z-index: 9999;
+}
+
 /* Fixed background image */
 .background {
   position: fixed;

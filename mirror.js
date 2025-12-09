@@ -1,33 +1,42 @@
-// CI mirror redirect for Table_Well and ci.cherev
-// - If the URL has ?ci.cherev or the path already contains /ci
-//   we send the visitor to the CI activation page.
-// - Works on both:
-//     https://lifeabundantly.github.io/Table_Well/
-//   and
-//     https://ci.cherev/
-
 (function () {
   try {
-    var params = new URLSearchParams(window.location.search);
+    var loc = window.location;
+    var host = loc.hostname || "";
+    var path = loc.pathname || "";
+    var search = loc.search || "";
 
-    // Only do anything when the CI mirror key is present
-    // or we are already on a /ci path.
-    if (!params.has('ci.cherev') && !window.location.pathname.includes('/ci')) {
-      return;
+    // Check for ci.cherev query key
+    var params = new URLSearchParams(search);
+    var hasCiParam = params.has("ci.cherev");
+
+    // Check for ci host or /ci path
+    var isCiHost = host.toLowerCase() === "ci.cherev";
+    var pathLooksCi = path.toLowerCase().indexOf("/ci") !== -1;
+
+    var mirrorActive = hasCiParam || isCiHost || pathLooksCi;
+
+    if (mirrorActive) {
+      // If the only purpose of ?ci.cherev is activation, we can clean it
+      // from the URL to avoid polluting later copies.
+      if (hasCiParam) {
+        params.delete("ci.cherev");
+        var newQuery = params.toString();
+        var newUrl =
+          path +
+          (newQuery ? "?" + newQuery : "") +
+          (loc.hash || "");
+        window.history.replaceState({}, "", newUrl);
+      }
+
+      // Expose mirror state for the page code and CSS.
+      window.__CI_MIRROR_ACTIVE__ = true;
+      document.documentElement.dataset.ciMirror = "active";
+    } else {
+      window.__CI_MIRROR_ACTIVE__ = false;
+      document.documentElement.dataset.ciMirror = "inactive";
     }
-
-    var path = window.location.pathname || '/';
-    var base = '';
-
-    // On GitHub project pages the path starts with /Table_Well/
-    if (path.indexOf('/Table_Well/') === 0) {
-      base = '/Table_Well';
-    }
-
-    // On the custom domain (ci.cherev) the base stays ''.
-    window.location.replace(base + '/ci.html');
   } catch (e) {
-    // Fail soft; never break the main page.
-    console.error('CI mirror redirect error', e);
+    // Fail safe: never break the page if this throws.
+    console.error("mirror.js error", e);
   }
 })();
