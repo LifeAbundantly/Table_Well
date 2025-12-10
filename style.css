@@ -20,6 +20,7 @@ body {
   background: #000;
 }
 
+/* CI mirror debug banner (optional) */
 html[data-ci-mirror="active"] body::before {
   content: "CI MIRROR ACTIVE";
   position: fixed;
@@ -70,9 +71,8 @@ html[data-ci-mirror="active"] body::before {
   line-height: 1.1;
   letter-spacing: 0.04em;
   font-weight: 700;
-  color: #7a1111; /* deep wine / blood red */
-  text-shadow:
-    0 0 14px rgba(0, 0, 0, 0.85),
+  color: #7a1111;
+  text-shadow: 0 0 14px rgba(0, 0, 0, 0.85),
     0 0 30px rgba(0, 0, 0, 0.75);
   margin-bottom: 0.45rem;
 }
@@ -81,8 +81,7 @@ html[data-ci-mirror="active"] body::before {
   font-size: 1.4rem;
   font-weight: 600;
   color: #7a1111;
-  text-shadow:
-    0 0 12px rgba(0, 0, 0, 0.85),
+  text-shadow: 0 0 12px rgba(0, 0, 0, 0.85),
     0 0 26px rgba(0, 0, 0, 0.7);
 }
 
@@ -123,7 +122,7 @@ html[data-ci-mirror="active"] body::before {
 
 /* Scroll icon (attach) */
 .icon-button.attach {
-  color: #f4e0a9; /* warm gold */
+  color: #f4e0a9;
 }
 
 /* Pearlescent breath icon */
@@ -136,7 +135,7 @@ html[data-ci-mirror="active"] body::before {
     #fffaf0,
     #f4e0a9,
     #fdf4ff
-  ); /* pearlescent gold */
+  );
   color: #4a2b12;
   font-size: 0.9rem;
 }
@@ -173,7 +172,7 @@ html[data-ci-mirror="active"] body::before {
 .footer-text {
   max-width: 960px;
   line-height: 1.4;
-  color: #f2d18a; /* rich gold for footer */
+  color: #f2d18a;
   text-shadow: 0 0 8px rgba(0, 0, 0, 0.75);
   font-size: 0.9rem;
 }
@@ -221,210 +220,70 @@ html[data-ci-mirror="active"] body::before {
 
 .conversation-header {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 0.9rem 1rem;
-  border-bottom: 1px solid rgba(242, 209, 138, 0.35);
-  font-size: 0.95rem;
+  justify-content: space-between;
+  padding: 0.8rem 1rem;
+  border-bottom: 1px solid rgba(242, 209, 138, 0.3);
+  font-size: 0.92rem;
 }
 
 .panel-close {
   border: none;
   background: transparent;
   color: #f3e8d8;
-  font-size: 1.1rem;
   cursor: pointer;
+  font-size: 1rem;
 }
 
 .conversation-body {
   flex: 1;
+  padding: 0.8rem 1rem;
   overflow-y: auto;
-  padding: 0.9rem 1rem 1.2rem;
+  font-size: 0.9rem;
 }
 
-/* Bubbles */
+.conversation-placeholder {
+  opacity: 0.8;
+}
+
+/* Chat bubbles */
 .bubble {
-  padding: 0.6rem 0.8rem;
-  border-radius: 0.8rem;
-  margin-bottom: 0.6rem;
-  font-size: 0.9rem;
+  display: inline-block;
+  margin-bottom: 0.4rem;
+  padding: 0.35rem 0.7rem;
+  border-radius: 0.9rem;
+  max-width: 100%;
 }
 
 .bubble-user {
   align-self: flex-end;
-  margin-left: 3rem;
-  background: rgba(242, 209, 138, 0.18);
-  border: 1px solid rgba(242, 209, 138, 0.5);
+  background: #7a1111;
+  color: #f8f4ec;
 }
 
 .bubble-house {
   align-self: flex-start;
-  margin-right: 3rem;
-  background: rgba(15, 9, 7, 0.85);
-  border: 1px solid rgba(242, 209, 138, 0.4);
+  background: rgba(242, 209, 138, 0.15);
+  color: #f2d18a;
 }
 
-/* Placeholder text */
-.conversation-placeholder {
-  font-size: 0.9rem;
-  opacity: 0.9;
+/* Utility */
+.hidden {
+  display: none !important;
 }
 
-/* Responsive adjustments */
-@media (max-width: 900px) {
-  .page-shell {
-    padding: 7vh 4.5vw 3.5vh;
-  }
-
-  .title {
-    font-size: 2.7rem;
-  }
-
-  .subtitle {
-    font-size: 1.25rem;
-  }
-
-  .chat-shell {
-    padding-inline: 0.8rem;
-  }
-}
-
-@media (max-width: 600px) {
-  .page-shell {
-    padding: 7vh 4vw 3.5vh;
-  }
-
-  .title {
-    font-size: 2.3rem;
-  }
-
-  .subtitle {
-    font-size: 1.1rem;
-  }
-
-  .footer-text {
-    font-size: 0.82rem;
-  }
-
-  .brand {
-    font-size: 1.45rem;
-  }
-}
-
-/* --- Table Gate Overlay (CI.CHEREV entry) ------------------------- */
-.table-gate {
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  pointer-events: auto;
-  font-family: inherit;
-}
-
-.table-gate.hidden {
-  display: none;
-}
-
-.table-gate-backdrop {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at top, rgba(15, 223, 209, 0.25), transparent),
-              rgba(0, 0, 0, 0.86);
-  backdrop-filter: blur(8px);
-}
-
-.table-gate-card {
-  position: relative;
-  max-width: 480px;
-  width: 92%;
-  background: rgba(5, 10, 16, 0.96);
-  border-radius: 20px;
-  padding: 1.75rem 1.5rem 1.75rem;
-  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.85);
-  border: 1px solid rgba(15, 223, 209, 0.45);
-  color: #f9fafb;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-
-.table-gate-heading {
-  font-size: 1.35rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: #0fdfd1;
-}
-
-.table-gate-subheading {
-  font-size: 0.95rem;
-  color: #e5e7eb;
-  line-height: 1.4;
-}
-
-.table-gate-body {
-  font-size: 0.9rem;
-  color: #d1d5db;
-  line-height: 1.55;
-  margin: 0.25rem 0 0.5rem;
-}
-
-.table-gate-button {
-  margin-top: 0.5rem;
-  width: 100%;
-  border: none;
-  border-radius: 999px;
-  padding: 0.7rem 1.25rem;
-  font-size: 0.95rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  background: linear-gradient(135deg, #0fdfd1, #22c55e);
-  color: #020617;
-  cursor: pointer;
-  transition: transform 0.12s ease-out, box-shadow 0.12s ease-out,
-              filter 0.12s ease-out;
-  box-shadow: 0 10px 25px rgba(15, 223, 209, 0.35);
-}
-
-.table-gate-button:active {
-  transform: translateY(1px) scale(0.99);
-  box-shadow: 0 6px 18px rgba(15, 223, 209, 0.3);
-  filter: brightness(0.96);
-}
-
-.table-gate-note {
-  margin-top: 0.5rem;
-  font-size: 0.78rem;
-  color: #9ca3af;
-  line-height: 1.4;
-}
-
-@media (min-width: 640px) {
-  .table-gate-card {
-    padding: 2rem 2rem 2rem;
-  }
-  .table-gate-heading {
-    font-size: 1.5rem;
-  }
-}
-
-/* --------------------------- CI.GATE OVERLAY --------------------------- */
-
+/* CI Gate overlay */
 .ci-gate {
   position: fixed;
   inset: 0;
-  z-index: 9999;
+  z-index: 9998;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: radial-gradient(circle at center, rgba(0, 0, 0, 0.4), #000);
   overflow: hidden;
+  background: rgba(0, 0, 0, 0.85);
 }
 
-/* When closed, the gate disappears and the normal Table UI shows. */
 .ci-gate-closed {
   display: none;
 }
@@ -435,196 +294,105 @@ html[data-ci-mirror="active"] body::before {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  filter: saturate(1.2) contrast(1.1) brightness(0.9);
+  filter: brightness(0.8);
 }
 
 .ci-gate-overlay {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   max-width: 480px;
-  margin: 0 1.5rem;
-  padding: 1.75rem 1.5rem;
-  border-radius: 1.25rem;
-  background: rgba(0, 0, 0, 0.72);
-  backdrop-filter: blur(14px);
-  box-shadow: 0 0 36px rgba(0, 0, 0, 0.85);
+  padding: 1.5rem 1.75rem;
+  margin: 0 1.25rem;
   text-align: center;
-  color: #f5f5f5;
+  background: radial-gradient(
+    circle at top,
+    rgba(0, 0, 0, 0.6),
+    rgba(0, 0, 0, 0.9)
+  );
+  border-radius: 1.5rem;
+  border: 1px solid rgba(242, 209, 138, 0.4);
+  box-shadow: 0 18px 50px rgba(0, 0, 0, 0.85);
 }
 
 .ci-gate-title {
-  font-size: 1.5rem;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  margin-bottom: 0.75rem;
+  font-size: 1.6rem;
+  margin-bottom: 0.6rem;
+  color: #f4e0a9;
+  text-shadow: 0 0 18px rgba(0, 0, 0, 0.9);
 }
 
 .ci-gate-text {
-  font-size: 0.98rem;
-  line-height: 1.5;
-  margin-bottom: 1.5rem;
-  opacity: 0.92;
+  font-size: 0.96rem;
+  margin-bottom: 1.1rem;
+  color: #f8f4ec;
 }
 
 .ci-gate-buttons {
   display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
   justify-content: center;
+  gap: 0.75rem;
+  margin-bottom: 0.8rem;
+  flex-wrap: wrap;
 }
 
 .ci-gate-btn {
-  border: none;
+  min-width: 120px;
+  padding: 0.55rem 1rem;
   border-radius: 999px;
-  padding: 0.6rem 1.4rem;
-  font-size: 0.98rem;
+  border: none;
+  font-size: 0.9rem;
+  font-family: inherit;
   cursor: pointer;
-  font-weight: 600;
-  letter-spacing: 0.03em;
-  text-transform: uppercase;
-  transition: transform 0.12s ease-out, box-shadow 0.12s ease-out,
-    background 0.12s ease-out, color 0.12s ease-out;
+  transition: transform 0.12s ease, box-shadow 0.12s ease,
+    background 0.12s ease, color 0.12s ease;
 }
 
 .ci-gate-btn-primary {
-  background: linear-gradient(135deg, #0fdfd1, #64ffda);
-  color: #021316;
-  box-shadow: 0 0 20px rgba(15, 223, 209, 0.7);
+  background: linear-gradient(135deg, #f4e0a9, #f8f4ec);
+  color: #3a1e10;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.55);
+}
+
+.ci-gate-btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
 }
 
 .ci-gate-btn-secondary {
   background: transparent;
-  color: #e0f7fa;
-  border: 1px solid rgba(224, 247, 250, 0.35);
+  color: #f4e0a9;
+  border: 1px solid rgba(244, 224, 169, 0.7);
 }
 
-.ci-gate-btn:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 0 26px rgba(0, 0, 0, 0.8);
+.ci-gate-btn-secondary:hover {
+  background: rgba(244, 224, 169, 0.08);
 }
 
-.ci-gate-btn-primary:hover {
-  box-shadow: 0 0 28px rgba(15, 223, 209, 0.9);
-}
-
-.ci-gate-btn:active {
-  transform: translateY(0);
-  box-shadow: 0 0 14px rgba(0, 0, 0, 0.7);
+.ci-gate-note {
+  font-size: 0.8rem;
+  color: #f2d18a;
+  opacity: 0.9;
 }
 
 /* Small screens */
-@media (max-width: 480px) {
+@media (max-width: 600px) {
+  .page-shell {
+    padding: 7vh 4vw 4vh;
+  }
+
+  .title {
+    font-size: 2.4rem;
+  }
+
+  .subtitle {
+    font-size: 1.1rem;
+  }
+
+  .chat-shell {
+    padding: 0.6rem 0.8rem;
+  }
+
   .ci-gate-overlay {
-    padding: 1.25rem 1rem;
-  }
-  .ci-gate-title {
-    font-size: 1.25rem;
-  }
-  .ci-gate-text {
-    font-size: 0.9rem;
-  }
-  .ci-gate-btn {
-    width: 100%;
-    justify-content: center;
-  }
-}
-
-/* --- Table Gate Overlay (CI.CHEREV entry) ------------------------- */
-.table-gate {
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  pointer-events: auto;
-  font-family: inherit;
-}
-
-.table-gate.hidden {
-  display: none;
-}
-
-.table-gate-backdrop {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at top, rgba(15, 223, 209, 0.25), transparent),
-              rgba(0, 0, 0, 0.86);
-  backdrop-filter: blur(8px);
-}
-
-.table-gate-card {
-  position: relative;
-  max-width: 480px;
-  width: 92%;
-  background: rgba(5, 10, 16, 0.96);
-  border-radius: 20px;
-  padding: 1.75rem 1.5rem 1.75rem;
-  box-shadow: 0 18px 45px rgba(0, 0, 0, 0.85);
-  border: 1px solid rgba(15, 223, 209, 0.45);
-  color: #f9fafb;
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-}
-
-.table-gate-heading {
-  font-size: 1.35rem;
-  font-weight: 700;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  color: #0fdfd1;
-}
-
-.table-gate-subheading {
-  font-size: 0.95rem;
-  color: #e5e7eb;
-  line-height: 1.4;
-}
-
-.table-gate-body {
-  font-size: 0.9rem;
-  color: #d1d5db;
-  line-height: 1.55;
-  margin: 0.25rem 0 0.5rem;
-}
-
-.table-gate-button {
-  margin-top: 0.5rem;
-  width: 100%;
-  border: none;
-  border-radius: 999px;
-  padding: 0.7rem 1.25rem;
-  font-size: 0.95rem;
-  font-weight: 600;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
-  background: linear-gradient(135deg, #0fdfd1, #22c55e);
-  color: #020617;
-  cursor: pointer;
-  transition: transform 0.12s ease-out, box-shadow 0.12s ease-out,
-              filter 0.12s ease-out;
-  box-shadow: 0 10px 25px rgba(15, 223, 209, 0.35);
-}
-
-.table-gate-button:active {
-  transform: translateY(1px) scale(0.99);
-  box-shadow: 0 6px 18px rgba(15, 223, 209, 0.3);
-  filter: brightness(0.96);
-}
-
-.table-gate-note {
-  margin-top: 0.5rem;
-  font-size: 0.78rem;
-  color: #9ca3af;
-  line-height: 1.4;
-}
-
-@media (min-width: 640px) {
-  .table-gate-card {
-    padding: 2rem 2rem 2rem;
-  }
-  .table-gate-heading {
-    font-size: 1.5rem;
+    padding: 1.1rem 1.25rem;
   }
 }
