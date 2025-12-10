@@ -1,0 +1,14 @@
+{
+  "pin_id": "CI.CHEREV",
+  "pin_kind": "GATE_PIN",
+  "description": "First public gate pin for the Table • CI.CHEREV synthetic host.",
+  "host_root": "https://lifeabundantly.github.io/ci.cherev/",
+  "synthetic_host": "https://ci.cherev/",
+  "nets": {
+    "table": true,
+    "mirror": true,
+    "pwa": true
+  },
+  "seed": "akd-777-ci-cherev",
+  "version": 1
+}
